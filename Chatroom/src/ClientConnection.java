@@ -64,7 +64,7 @@ public class ClientConnection extends Thread {
 						
 					}else{
 
-						//add the new client to server database
+						//add the new client to server database first, in case other thread will add the same client again
 						ds.createClient(client, clientBR, clientBW);
 						
 						//update client with its identity
@@ -310,7 +310,7 @@ public class ClientConnection extends Thread {
 					}else{
 						//is the owner
 						
-						//get all client in the deleted room
+						//get all clients in the deleted room
 						ArrayList<String> clientInCurrentRoom = ds.getAllIdentityInSameRoom(client, true);
 						
 						//inform all the client in current chat room that every one is moving out
